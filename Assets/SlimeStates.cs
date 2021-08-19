@@ -4,5 +4,6 @@ public enum SlimeStates {
     AtkMelee,
     AtkRanged,
     Damage,
-    Death
+    Death,
+    Patroling
 }
