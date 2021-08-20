@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 43743121}
   - component: {fileID: 43743120}
   - component: {fileID: 43743122}
+  - component: {fileID: 43743123}
   m_Layer: 0
   m_Name: notlink
   m_TagString: Player
@@ -218,6 +219,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b9b7ed5a4b3634089101a6458cea72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+--- !u!50 &43743123
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43743119}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2079,6 +2102,10 @@ MonoBehaviour:
     AtkMeleeDistance: 1
     AtkRangedDistance: 3
     ChaseDistance: 7
+    cooldownAtkRanged: 0
+    cooldownAtkMelee: 0
+    doCooldownAtkRanged: 0
+    doCooldownAtkMelee: 0
   SlimeStates: 0
   speed: 1
 --- !u!61 &1784409876

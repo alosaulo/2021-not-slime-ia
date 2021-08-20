@@ -27,30 +27,6 @@ public class SlimeBehaviour : MonoBehaviour
     void Update()
     {
         IA();
-        switch (SlimeStates)
-        {
-            case SlimeStates.Idle:
-                break;
-            case SlimeStates.Walk:
-                
-                break;
-            case SlimeStates.AtkMelee:
-                
-                break;
-            case SlimeStates.AtkRanged:
-               
-                break;
-            case SlimeStates.Damage:
-                
-                break;
-            case SlimeStates.Death:
-               
-                break;
-            default:
-                break;
-        }
-
-        PlayAnimation(SlimeStates.ToString());
     }
 
     void PlayAnimation(string animationToPlay) {
@@ -63,26 +39,49 @@ public class SlimeBehaviour : MonoBehaviour
     public void IA() {
         float distance = Vector2.Distance(player.transform.position, 
             transform.position);
-        Debug.Log(distance);
+        //Estado em Idle
         if (distance > AIParameters.ChaseDistance)
         {
+            PlayAnimation("Idle");
             SlimeStates = SlimeStates.Idle;
         }
+        //Estado de perseguir o player
         else if (distance > AIParameters.AtkRangedDistance)
         {
             SlimeStates = SlimeStates.Walk;
+            PlayAnimation("Walk");
             Vector2 newPos = Vector2.MoveTowards(rigidbody2D.transform.position,
                                                     player.transform.position,
-                                                    speed * Time.fixedDeltaTime);
+                                                    speed * Time.deltaTime);
             rigidbody2D.transform.position = newPos;
         }
+        //Estado de atacar de longe
         else if (distance > AIParameters.AtkMeleeDistance)
         {
-            SlimeStates = SlimeStates.AtkRanged;
+            if (AIParameters.doCooldownAtkRanged == true)
+            {
+                PlayAnimation("Idle");
+            }
+            else {
+                PlayAnimation("AtkRanged");
+                SlimeStates = SlimeStates.AtkRanged;
+            }
         }
+        //Estado de atacar em curta distância
         else if (distance <= AIParameters.AtkMeleeDistance) {
+            PlayAnimation("AtkMelee");
             SlimeStates = SlimeStates.AtkMelee;
         }
+    }
+
+    public void CooldownAtkRanged() {
+        StartCoroutine("DoCooldownRangedAttack");
+    }
+
+    private IEnumerator DoCooldownRangedAttack() {
+        AIParameters.doCooldownAtkRanged = true;
+        yield return new WaitForSeconds(AIParameters.cooldownAtkRanged);
+        AIParameters.doCooldownAtkRanged = false;
     }
 
 }
