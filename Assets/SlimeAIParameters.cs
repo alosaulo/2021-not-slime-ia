@@ -5,11 +5,14 @@ public class SlimeAIParameters {
     public float AtkMeleeDistance;
     public float AtkRangedDistance;
     public float ChaseDistance;
+    
     [Header("Cooldown")]
     public float cooldownAtkRanged;
     public float cooldownAtkMelee;
+    
     [HideInInspector]
     public bool doCooldownAtkRanged = false;
     [HideInInspector]
     public bool doCooldownAtkMelee = false;
+
 }

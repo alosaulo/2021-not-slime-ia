@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SlimeBehaviour : MonoBehaviour
 {
-    public SlimeAIParameters AIParameters;
     public SlimeStates SlimeStates;
+    public SlimeAIParameters AIParameters;
     public float speed;
 
     Animator animator;
@@ -20,7 +20,7 @@ public class SlimeBehaviour : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
-        player = GameManager._gm.Player;
+        player = GameManager.instance.Player;
     }
 
     // Update is called once per frame

@@ -2098,6 +2098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c091a6da7650649882ae732511d2dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlimeStates: 0
   AIParameters:
     AtkMeleeDistance: 1
     AtkRangedDistance: 3
@@ -2106,7 +2107,6 @@ MonoBehaviour:
     cooldownAtkMelee: 0
     doCooldownAtkRanged: 0
     doCooldownAtkMelee: 0
-  SlimeStates: 0
   speed: 1
 --- !u!61 &1784409876
 BoxCollider2D:
