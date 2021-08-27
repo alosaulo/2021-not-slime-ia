@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeBehaviour : MonoBehaviour
+public class SlimeBehaviour : Character
 {
     public SlimeStates SlimeStates;
     public SlimeAIParameters AIParameters;
@@ -69,8 +69,14 @@ public class SlimeBehaviour : MonoBehaviour
         }
         //Estado de atacar em curta distância
         else if (distance <= AIParameters.AtkMeleeDistance) {
-            PlayAnimation("AtkMelee");
-            SlimeStates = SlimeStates.AtkMelee;
+            if (AIParameters.doCooldownAtkMelee == true)
+            {
+                PlayAnimation("Idle");
+            }
+            else {
+                PlayAnimation("AtkMelee");
+                SlimeStates = SlimeStates.AtkMelee;
+            }
         }
     }
 
@@ -82,6 +88,16 @@ public class SlimeBehaviour : MonoBehaviour
         AIParameters.doCooldownAtkRanged = true;
         yield return new WaitForSeconds(AIParameters.cooldownAtkRanged);
         AIParameters.doCooldownAtkRanged = false;
+    }
+
+    public void CooldownAtkMelee() {
+        StartCoroutine("DoCooldownAtkMelee");
+    }
+
+    private IEnumerator DoCooldownAtkMelee() {
+        AIParameters.doCooldownAtkMelee = true;
+        yield return new WaitForSeconds(AIParameters.cooldownAtkMelee);
+        AIParameters.doCooldownAtkMelee = false;
     }
 
 }
