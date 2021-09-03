@@ -8,6 +8,9 @@ public class SlimeBehaviour : Character
     public SlimeAIParameters AIParameters;
     public float speed;
 
+    public GameObject ProjectilePrefab;
+    public Transform ProjectileOrigin;
+
     Animator animator;
     Rigidbody2D rigidbody2D;
 
@@ -98,6 +101,12 @@ public class SlimeBehaviour : Character
         AIParameters.doCooldownAtkMelee = true;
         yield return new WaitForSeconds(AIParameters.cooldownAtkMelee);
         AIParameters.doCooldownAtkMelee = false;
+    }
+
+    public void ShootProjectile() {
+        Instantiate(ProjectilePrefab,
+            ProjectileOrigin.position,
+            Quaternion.identity);
     }
 
 }
