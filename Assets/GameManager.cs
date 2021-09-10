@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
     public static GameManager instance;
     public GameObject Player;
+    
+    [SerializeField]
+    GameObject TelaGameOver;
 
     private void Awake()
     {
@@ -24,4 +27,14 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void AtivarTelaGameOver()
+    {
+        TelaGameOver.SetActive(true);
+    }
+
+    public void DesativarTelaGameOver() {
+        TelaGameOver.SetActive(false);
+    }
+
 }

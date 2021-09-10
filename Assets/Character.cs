@@ -7,6 +7,10 @@ public class Character : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
 
+    public float speed;
+    protected Rigidbody2D myBody;
+    protected Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,7 @@ public class Character : MonoBehaviour
         currentHealth -= dam;
         if (currentHealth <= 0) {
             currentHealth = 0;
+            Death();
         }
     }
 
@@ -33,7 +38,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Death() {
+    public virtual void Death() {
         Destroy(gameObject);
     }
 

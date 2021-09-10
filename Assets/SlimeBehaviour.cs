@@ -6,13 +6,9 @@ public class SlimeBehaviour : Character
 {
     public SlimeStates SlimeStates;
     public SlimeAIParameters AIParameters;
-    public float speed;
 
     public GameObject ProjectilePrefab;
     public Transform ProjectileOrigin;
-
-    Animator animator;
-    Rigidbody2D rigidbody2D;
 
     string animationState;
     
@@ -22,7 +18,7 @@ public class SlimeBehaviour : Character
     void Start()
     {
         animator = GetComponent<Animator>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        myBody = GetComponent<Rigidbody2D>();
         player = GameManager.instance.Player;
     }
 
@@ -53,10 +49,10 @@ public class SlimeBehaviour : Character
         {
             SlimeStates = SlimeStates.Walk;
             PlayAnimation("Walk");
-            Vector2 newPos = Vector2.MoveTowards(rigidbody2D.transform.position,
+            Vector2 newPos = Vector2.MoveTowards(myBody.transform.position,
                                                     player.transform.position,
                                                     speed * Time.deltaTime);
-            rigidbody2D.transform.position = newPos;
+            myBody.transform.position = newPos;
         }
         //Estado de atacar de longe
         else if (distance > AIParameters.AtkMeleeDistance)
@@ -107,6 +103,13 @@ public class SlimeBehaviour : Character
         Instantiate(ProjectilePrefab,
             ProjectileOrigin.position,
             Quaternion.identity);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player") {
+            this.RecieveDamage(1);
+        }
     }
 
 }

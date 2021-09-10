@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class PlayerController : Character
 {
-    public float speed;
-    Rigidbody2D rigidBody;
     // Start is called before the first frame update
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
+        myBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -22,7 +20,14 @@ public class PlayerController : Character
 
         Vector2 normalized = new Vector2(hAxis, vAxis).normalized * speed;
 
-        rigidBody.velocity = normalized;
+        myBody.velocity = normalized;
 
     }
+
+    public override void Death()
+    {
+        GameManager.instance.AtivarTelaGameOver();
+        base.Death();
+    }
+
 }
