@@ -30,4 +30,11 @@ public class PlayerController : Character
         base.Death();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "EnemyAtk") {
+            RecieveDamage(1);
+        }
+    }
+
 }

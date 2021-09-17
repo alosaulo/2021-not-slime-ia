@@ -13,7 +13,9 @@ public class SlimeBehaviour : Character
     string animationState;
     
     GameObject player;
-    
+
+    public GameObject AtkPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,8 @@ public class SlimeBehaviour : Character
     // Update is called once per frame
     void Update()
     {
-        IA();
+        if(player != null && isDead == false)
+            IA();
     }
 
     void PlayAnimation(string animationToPlay) {
@@ -105,11 +108,25 @@ public class SlimeBehaviour : Character
             Quaternion.identity);
     }
 
+    public void AtkMelee() {
+        GameObject go =Instantiate
+            (AtkPrefab, transform.position, Quaternion.identity);
+        Destroy(go, 0.6f);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player") {
             this.RecieveDamage(1);
         }
+    }
+
+    public bool isDead = false;
+    public override void Death()
+    {
+        isDead = true;
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        PlayAnimation("Death");
     }
 
 }
