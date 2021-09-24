@@ -44,8 +44,9 @@ public class SlimeBehaviour : Character
         //Estado em Idle
         if (distance > AIParameters.ChaseDistance)
         {
-            PlayAnimation("Idle");
-            SlimeStates = SlimeStates.Idle;
+            /*PlayAnimation("Idle");
+            SlimeStates = SlimeStates.Idle;*/
+            FollowWaypoint();
         }
         //Estado de perseguir o player
         else if (distance > AIParameters.AtkRangedDistance)
@@ -80,6 +81,20 @@ public class SlimeBehaviour : Character
                 SlimeStates = SlimeStates.AtkMelee;
             }
         }
+    }
+
+    public Transform ActualWaypoint;
+    public void FollowWaypoint() {
+        if (ActualWaypoint == null) {
+            ActualWaypoint = 
+                GameManager.instance.GetWaypointPerto(transform.position);
+        }
+        SlimeStates = SlimeStates.Patroling;
+        PlayAnimation("Walk");
+        Vector2 newPos = Vector2.MoveTowards(myBody.transform.position,
+                                        ActualWaypoint.position,
+                                        speed * Time.deltaTime);
+        myBody.transform.position = newPos;
     }
 
     public void CooldownAtkRanged() {
