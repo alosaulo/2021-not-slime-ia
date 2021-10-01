@@ -95,6 +95,9 @@ public class SlimeBehaviour : Character
                                         ActualWaypoint.position,
                                         speed * Time.deltaTime);
         myBody.transform.position = newPos;
+        if (Vector2.Distance(transform.position, ActualWaypoint.position) <= 1) {
+            ActualWaypoint = GameManager.instance.GetWaypointSeguinte(ActualWaypoint);
+        }
     }
 
     public void CooldownAtkRanged() {

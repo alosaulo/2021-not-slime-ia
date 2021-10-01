@@ -58,5 +58,19 @@ public class GameManager : MonoBehaviour
         return waypoint;
     }
 
+    public Transform GetWaypointSeguinte(Transform waypointAtual) {
+        for (int i = 0; i < Waypoints.Length; i++)
+        {
+            if (Waypoints[i] == waypointAtual) 
+            {
+                if (i < Waypoints.Length - 1)
+                    return Waypoints[i + 1];
+                else
+                    return Waypoints[0];
+            }
+        }
+        return waypointAtual;
+    }
+
 
 }

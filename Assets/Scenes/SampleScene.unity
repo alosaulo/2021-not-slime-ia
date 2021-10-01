@@ -312,7 +312,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -682,7 +682,7 @@ Transform:
   - {fileID: 693150768}
   - {fileID: 376472411}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &871924124
 GameObject:
@@ -41514,7 +41514,7 @@ RectTransform:
   m_Children:
   - {fileID: 1246634522}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -96321,9 +96321,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 4795287080178094493, guid: 7541962b3fd0a3143a5a7f2827afa7f4, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4795287080178094495, guid: 7541962b3fd0a3143a5a7f2827afa7f4, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4795287080178094495, guid: 7541962b3fd0a3143a5a7f2827afa7f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -96380,11 +96384,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6090311653074573607, guid: 726214fa74e0171419d508f78b1ec704, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.25
+      value: -6.92
       objectReference: {fileID: 0}
     - target: {fileID: 6090311653074573607, guid: 726214fa74e0171419d508f78b1ec704, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.42
+      value: -14.68
       objectReference: {fileID: 0}
     - target: {fileID: 6090311653074573607, guid: 726214fa74e0171419d508f78b1ec704, type: 3}
       propertyPath: m_LocalPosition.z
